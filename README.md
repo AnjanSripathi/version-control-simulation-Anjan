@@ -8,6 +8,7 @@ The repo was initialized without a README or starter files, as required by the a
 
 i) Cloned the repository locally
 git clone https://github.com/AnjanSripathi/version-control-simulation-Anjan.git
+
 cd version-control-simulation-Anjan
 Created project files locally  
 All initial files were created and committed from the local environment.
@@ -41,7 +42,7 @@ The first pushed branch became the default by necessity.
 Resolution Steps:
 To restore a proper Git workflow:-
 1) Created a new main branch locally
-git switch -c main
+git checkout -b main
 
 2) Removed the incorrect upstream reference
 git branch --unset-upstream
@@ -100,6 +101,6 @@ git commit -m "Describe your changes clearly"
 5. Push your branch
 git push -u origin feature/<task-name>
 6. Open a Pull Request
-GitHub → Compare & Pull Request → Target main.
+GitHub -> Compare & Pull Request -> Target main.
 7. Merge after review
 Once approved, merge the PR into main.
