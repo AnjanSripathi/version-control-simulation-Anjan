@@ -6,134 +6,100 @@ Initial Setup Steps
 Created an empty GitHub repository  
 The repo was initialized without a README or starter files, as required by the assignment.
 
-Cloned the repository locally
-
-Code
+i) Cloned the repository locally
 git clone https://github.com/AnjanSripathi/version-control-simulation-Anjan.git
 cd version-control-simulation-Anjan
 Created project files locally  
 All initial files were created and committed from the local environment.
 
-Established proper branch structure  
+ii) Established proper branch structure  
 A main branch was later created and pushed to GitHub to serve as the primary integration branch.
 
-Branch Initialization Issue & Resolution
+iii)Branch Initialization Issue & Resolution
 Issue Summary
 Because the repository was created empty, GitHub did not automatically generate a main branch. GitHub only creates main when at least one file (e.g., README) is added during repo creation.
 
-After cloning the empty repo, the first branch I created and pushed was:
-
-Code
+iv) After cloning the empty repo, the first branch I created and pushed was:
 feature/header
 GitHub interpreted this as the first and only branch, and therefore set:
-
-Code
-origin/feature/header
-as the default branch.
-
+origin/feature/header as the default branch.
 This caused several issues:
+1) main did not exist locally or remotely
 
-main did not exist locally or remotely
+2) git branch -a showed only feature/header
 
-git branch -a showed only feature/header
+3) git fetch --all returned no additional branches
 
-git fetch --all returned no additional branches
+4) Switching to main failed because it wasn’t present
 
-Switching to main failed because it wasn’t present
-
-The remote HEAD pointer showed:
-
-Code
+v) The remote HEAD pointer showed:
 remotes/origin/HEAD -> origin/feature/header
-Root Cause
+Root Cause :
 The repository had no initial commit, so GitHub had no default branch.
 The first pushed branch became the default by necessity.
 
-Resolution Steps
-To restore a proper Git workflow:
-
-Created a new main branch locally
-
-Code
+Resolution Steps:
+To restore a proper Git workflow:-
+1) Created a new main branch locally
 git switch -c main
-Removed the incorrect upstream reference
 
-Code
+2) Removed the incorrect upstream reference
 git branch --unset-upstream
-Pushed the new main branch to GitHub
 
-Code
+3) Pushed the new main branch to GitHub
 git push -u origin main
-Changed the default branch on GitHub  
+
+4) Changed the default branch on GitHub  
 GitHub -> Settings -> Branches -> Default branch -> main
 
-Refreshed the local HEAD pointer
-
-Code
+5) Refreshed the local HEAD pointer
 git remote set-head origin -a
-After these steps, the repository now correctly contains:
 
+6) After these steps, the repository now correctly contains:
 main (default branch)
-
 feature/header (active development branch)
-
 This aligns the project with standard Git workflows and the assignment requirements.
 
-Branching Strategy
+vi) Branching Strategy
 This project follows a simple and clean branching model suitable for assignments and small projects.
-
-Main Branch (main)
+1) Main Branch (main)
 Serves as the default branch.
-
 Contains stable, reviewed, and approved code.
-
 All feature work is merged into main through pull requests.
 
-Feature Branches (feature/<name>)
+2) Feature Branches (feature/<name>)
 Used for isolated development of specific tasks or components.
-
 Example:
-
-Code
-feature/header
+i) feature/header
 Created from main:
+git checkout main
+git checkout -b feature/<name>
 
-Code
-git switch main
-git switch -c feature/<name>
-Pull Request Workflow
+ii) Pull Request Workflow
 Complete work on the feature branch.
 
-Push changes to GitHub:
-
-Code
+iii) Push changes to GitHub:
 git push -u origin feature/<name>
-Open a Pull Request targeting main.
 
+iv) Open a Pull Request targeting main.
 Review and merge once approved.
 
-How to Contribute
+v) How to Contribute
 Although this is a solo assignment, the repository is structured to support collaborative workflows.
 
 1. Clone the repository
-Code
 git clone <repo-url>
 2. Create a new feature branch
-Code
-git switch main
-git switch -c feature/<task-name>
+git checkout main
+git checkout -b feature/<task-name>
 3. Make changes locally
 Add or modify files as needed.
-
 4. Commit your work
-Code
 git add .
 git commit -m "Describe your changes clearly"
 5. Push your branch
-Code
 git push -u origin feature/<task-name>
 6. Open a Pull Request
 GitHub → Compare & Pull Request → Target main.
-
 7. Merge after review
 Once approved, merge the PR into main.
